@@ -1,0 +1,15 @@
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\bin\Debug\net6.0\practiseDemo.exe
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\bin\Debug\net6.0\practiseDemo.deps.json
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\bin\Debug\net6.0\practiseDemo.runtimeconfig.json
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\bin\Debug\net6.0\practiseDemo.dll
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\bin\Debug\net6.0\practiseDemo.pdb
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.csproj.AssemblyReference.cache
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.AssemblyInfoInputs.cache
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.AssemblyInfo.cs
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.csproj.CoreCompileInputs.cache
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.dll
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\refint\practiseDemo.dll
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.pdb
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\practiseDemo.genruntimeconfig.cache
+C:\Users\v-rajraval\source\repos\practiseDemo\practiseDemo\obj\Debug\net6.0\ref\practiseDemo.dll
