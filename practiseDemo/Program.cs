@@ -1119,8 +1119,8 @@ int[] atree = { 1, 2, 3, 4, 5, 6};
 
 //NodeT x = ArrayToTree(atree, 0,atree.Length);
 //Console.WriteLine("In Order");
-NodeT x = CreateTree(); 
-inOrder(x);
+//NodeT x = CreateTree(); 
+//inOrder(x);
 // Console.WriteLine("Pre Order");
 // preOrder(x);
 // Console.WriteLine("Post Order");
@@ -1150,21 +1150,21 @@ void postOrder(NodeT root)
     Console.Write("{0} ", root.data);
 }
 
-Console.WriteLine("Height of tree : {0}",height(x));
+//Console.WriteLine("Height of tree : {0}",height(x));
 int height(NodeT root) 
 {
     if (root == null) return 0;
 
     return Math.Max(height(root.Left), height(root.Right)) + 1;
 }
-Console.WriteLine("Size of tree : {0}", size(x));
+//Console.WriteLine("Size of tree : {0}", size(x));
 int size(NodeT root) 
 {
     if (root == null) return 0;
 
     return size(root.Left) + size(root.Right) + 1;
 }
-Console.WriteLine("Max of tree : {0}", maxInTree(x));
+//Console.WriteLine("Max of tree : {0}", maxInTree(x));
 
 int maxInTree(NodeT root) 
 {
@@ -1172,7 +1172,7 @@ int maxInTree(NodeT root)
     
     return Math.Max(root.data,Math.Max(maxInTree(root.Left),maxInTree(root.Right)));
 }
-Console.WriteLine("Min of tree : {0}", minInTree(x));
+//Console.WriteLine("Min of tree : {0}", minInTree(x));
 
 int minInTree(NodeT root)
 {
@@ -1191,8 +1191,9 @@ int minInTree(NodeT root)
          PrintCurrentLevel(root.Right,level-1);
     }
 
+
 }
-LevelOrderTravese(x);
+//LevelOrderTravese(x);
 void LevelOrderTravese(NodeT root) 
 {
     Console.WriteLine("Level order travsel print: ");
@@ -1203,8 +1204,8 @@ void LevelOrderTravese(NodeT root)
 }
 // Level order travsersal = Using Queue Time  : O(n)
 //using Queue<NodeT> which store n  ode 
-Console.WriteLine("Printing the Level order travsrse using Queue : ");
-PrintLevelOrder(x);
+//Console.WriteLine("Printing the Level order travsrse using Queue : ");
+//PrintLevelOrder(x);
 void PrintLevelOrder(NodeT root) 
 {
     Queue<NodeT> q = new Queue<NodeT>();
@@ -1218,12 +1219,13 @@ void PrintLevelOrder(NodeT root)
         if (cur == null)
         {
             if (!(q.Count > 0)) return;
+
             q.Enqueue(null);
             Console.WriteLine();
         }
         else
         {
-            Console.Write(cur.data);
+            Console.Write(cur.data + " " );
 
             if (cur.Left != null)
             {
@@ -1237,4 +1239,62 @@ void PrintLevelOrder(NodeT root)
         }
     } 
 }
+// Print left view of the tree
+NodeT x = new NodeT(0);
+x = x.createSampletree();
+//x = CreateTree();
+Console.WriteLine("Printing tree in Order");
+PrintLevelOrder(x);
+Console.WriteLine();
+Console.WriteLine("***************************");
+//PrintLeftView(x);
 
+void ptintLeftViewUtil(NodeT root,List<NodeT> list,int level)
+{
+    int h = height(root);
+    
+    if (root == null) return;
+    Console.WriteLine("Level : " + level);
+
+    if (list[level] == null) 
+    {
+        list.Add(root);
+    }
+
+    ptintLeftViewUtil(root.Right,list ,level + 1);
+    ptintLeftViewUtil(root.Left,list,level + 1);
+}
+
+void PrintLeftView(NodeT root)
+{
+   
+    List<NodeT> l = new List<NodeT>();
+    ptintLeftViewUtil(root,l,0);
+    Console.WriteLine("****************Printing left view***********************");
+   
+}
+Console.WriteLine(" ");
+BreathFirstSearch(x);
+void BreathFirstSearch(NodeT root) 
+{
+    NodeT  cur = root;
+    List<int> list = new List<int>();
+    Queue<NodeT> q = new Queue<NodeT> ();
+    q.Enqueue (cur);
+
+    while (q.Count > 0) 
+    {
+        cur = q.Dequeue ();
+        list.Add(cur.data);
+        Console.Write(cur.data + " " );
+        if (cur.Left != null) 
+        {
+            q.Enqueue(cur.Left);
+        }
+        if (cur.Right != null)
+        {
+            q.Enqueue(cur.Right);
+        }
+
+    }
+}
