@@ -6,6 +6,8 @@ using practiseDemo;
 using static practiseDemo.LinkedList;
 using System.Diagnostics;
 using NodeT = practiseDemo.NodeT;
+using System.Reflection.Metadata.Ecma335;
+using System.Collections;
 
 Console.WriteLine("Hello, World!");
 
@@ -1100,29 +1102,25 @@ NodeT CreateTree()
 //NodeT x = CreateTree();
 // Array to  level order tree.
 
-NodeT ArrayToTree(int[] a,int i) 
+NodeT ArrayToTree(int[] a,int i,int n) 
 {
     NodeT root = null;
-
-    if (i < arr.Length) 
+    if (i < n) 
     {
         root = new NodeT(a[i]);
 
-        // insert left child . 
-        root.Left = ArrayToTree(a,2*i+1);
-
-        // insert right child . 
-        root.Right = ArrayToTree(a, 2 * i + 2);
-
+        root.Left = ArrayToTree(a, 2 * i + 1, n);
+        root.Right = ArrayToTree(a, 2 * i + 2, n);
     }
     return root;
 }
 
-int[] atree = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
+int[] atree = { 1, 2, 3, 4, 5, 6};
 
-NodeT x = ArrayToTree(a,0);
- Console.WriteLine("In Order");
- inOrder(x);
+//NodeT x = ArrayToTree(atree, 0,atree.Length);
+//Console.WriteLine("In Order");
+NodeT x = CreateTree(); 
+inOrder(x);
 // Console.WriteLine("Pre Order");
 // preOrder(x);
 // Console.WriteLine("Post Order");
@@ -1143,7 +1141,7 @@ void preOrder(NodeT root)
     preOrder(root.Left);
     preOrder(root.Right);
 }
-
+                                                                  
 void postOrder(NodeT root)
 {
     if (root == null) return;
@@ -1181,5 +1179,62 @@ int minInTree(NodeT root)
     if (root == null) return int.MaxValue;
 
     return Math.Min(root.data, Math.Min(minInTree(root.Left), minInTree(root.Right)));
+}
+ // Level order travsersal = Naive approch - Time  : O(n^2)
+ void PrintCurrentLevel(NodeT root,int level) 
+{
+    if (root == null) return;
+    if (level== 1) Console.Write(root.data + " ");
+    else if(level>1)
+    {
+         PrintCurrentLevel(root.Left,level-1);
+         PrintCurrentLevel(root.Right,level-1);
+    }
+
+}
+LevelOrderTravese(x);
+void LevelOrderTravese(NodeT root) 
+{
+    Console.WriteLine("Level order travsel print: ");
+    for (int i = height(root); i >= 1; i--) 
+    {
+        PrintCurrentLevel(root, i);
+    }
+}
+// Level order travsersal = Using Queue Time  : O(n)
+//using Queue<NodeT> which store n  ode 
+Console.WriteLine("Printing the Level order travsrse using Queue : ");
+PrintLevelOrder(x);
+void PrintLevelOrder(NodeT root) 
+{
+    Queue<NodeT> q = new Queue<NodeT>();
+     q.Enqueue(root);
+     q.Enqueue(null);
+
+
+    while (q.Count > 0)
+    {
+        NodeT cur = q.Dequeue();
+        if (cur == null)
+        {
+            if (!(q.Count > 0)) return;
+            q.Enqueue(null);
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.Write(cur.data);
+
+            if (cur.Left != null)
+            {
+                q.Enqueue((NodeT)cur.Left);
+            }
+
+            if (cur.Right != null)
+            {
+                q.Enqueue((NodeT)cur.Right);
+            }
+        }
+    } 
 }
 
