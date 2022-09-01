@@ -1274,8 +1274,10 @@ void PrintLeftView(NodeT root)
    
 }
 Console.WriteLine(" ");
-BreathFirstSearch(x);
-void BreathFirstSearch(NodeT root) 
+List<int> reList = new List<int>();
+reList = BreathFirstSearch(x);
+printArray(reList.ToArray());
+List<int> BreathFirstSearch(NodeT root) 
 {
     NodeT  cur = root;
     List<int> list = new List<int>();
@@ -1286,7 +1288,7 @@ void BreathFirstSearch(NodeT root)
     {
         cur = q.Dequeue ();
         list.Add(cur.data);
-        Console.Write(cur.data + " " );
+       // Console.Write(cur.data + " " );
         if (cur.Left != null) 
         {
             q.Enqueue(cur.Left);
@@ -1297,4 +1299,5 @@ void BreathFirstSearch(NodeT root)
         }
 
     }
+    return list;
 }
