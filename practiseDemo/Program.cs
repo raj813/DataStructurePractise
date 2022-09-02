@@ -1274,9 +1274,8 @@ void PrintLeftView(NodeT root)
    
 }
 Console.WriteLine(" ");
-List<int> reList = new List<int>();
-reList = BreathFirstSearch(x);
-printArray(reList.ToArray());
+printArray(BreathFirstSearch(x).ToArray());
+
 List<int> BreathFirstSearch(NodeT root) 
 {
     NodeT  cur = root;
@@ -1301,3 +1300,79 @@ List<int> BreathFirstSearch(NodeT root)
     }
     return list;
 }
+
+Console.WriteLine("RightSideBinaryView ");
+List<int> rel = new List<int>();
+rel = RightSideBinaryView(x);
+printArray(rel.ToArray());
+
+List<int> RightSideBinaryView(NodeT root) 
+{
+    
+    List<int> result = new List<int> ();
+    if (root == null) return result;
+
+    Queue<NodeT> q = new Queue<NodeT> ();
+    
+    q.Enqueue(root);
+
+    while (q.Count > 0) 
+    {
+        int n = q.Count;
+        result.Add (q.Peek().data);
+
+        for(int i = 0;i < n; i++)
+        {
+            NodeT cur = q.Dequeue();
+            if (cur.Right != null)
+            {
+                q.Enqueue(root.Right);
+            }
+            if (cur.Left != null) 
+            {
+                q.Enqueue(cur.Left);
+            }
+            
+        }
+        return result;
+    }
+    return result;
+}
+
+Console.WriteLine("print right side view");
+TreeView(x,true);
+void TreeView(NodeT root,bool view) 
+{
+    if (root == null) return;
+    Queue<NodeT> q = new Queue<NodeT> ();
+    q.Enqueue(root);
+
+    while (q.Count != 0) 
+    {
+        int n = q.Count;
+
+        for (int i = 0; i < n; i++) 
+        {
+            NodeT cur = q.Peek();
+            q.Dequeue();
+            if (i == n - 1 && view == false) 
+            {
+                Console.Write(cur.data + " ");
+            }
+            if(i==0 && view == true)
+            {
+                Console.Write(cur.data + " ");
+            }
+            if (cur.Left != null) 
+            {
+                q.Enqueue (cur.Left);
+            }
+            if (cur.Right != null) 
+            {
+                q.Enqueue(cur.Right);
+            }
+        }
+
+    }
+}
+
