@@ -1421,11 +1421,11 @@ List<int> TreeTopView(NodeT root)
     
 }
 
-Console.WriteLine("Bottom view of the tree : ");
+/*Console.WriteLine("Bottom view of the tree : ");
 NodeT y = CreateTree();
 int[] ar = TreeBottomView(y).ToArray();
 printArray(ar);
-
+*/
 List<int> TreeBottomView(NodeT root)
 {
     Queue<Pair> q = new Queue<Pair>();
@@ -1461,3 +1461,19 @@ List<int> TreeBottomView(NodeT root)
     return list;
 
 }
+
+// Diameter of the Binary Tree :
+// 
+int ans = 0;
+Console.WriteLine("Diameter of Binary Tree : ");
+
+int Diameter(NodeT root)
+{
+    if (root == null) return 0;
+    int lh = Diameter(root.Left);
+    int rh = Diameter(root.Right);
+
+    ans = Math.Max(ans, 1 + lh + rh);
+    return Math.Max(lh,rh) + 1;
+}
+Console.WriteLine( "d : " + Diameter(CreateTree()) + "Answer :" + ans ) ;
