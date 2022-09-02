@@ -1339,10 +1339,12 @@ List<int> RightSideBinaryView(NodeT root)
     return result;
 }
 
-Console.WriteLine("print right side view");
 TreeView(x,true);
+
 void TreeView(NodeT root,bool view) 
 {
+    Console.WriteLine("print {0} side Tree view",view == true? "Left" : "Right");
+
     if (root == null) return;
     Queue<NodeT> q = new Queue<NodeT> ();
     q.Enqueue(root);
@@ -1376,3 +1378,86 @@ void TreeView(NodeT root,bool view)
     }
 }
 
+
+// Top  and bottom view of the Tree : 
+// 
+Console.WriteLine("Top view of the tree : ");
+printArray(TreeTopView(x).ToArray());
+
+List<int> TreeTopView(NodeT root) 
+{
+    Queue<Pair> q = new Queue<Pair>();
+    SortedDictionary<int,NodeT> topViewMap= new SortedDictionary<int,NodeT>();
+
+    if (root == null) { return new List<int>(); }
+
+    q.Enqueue(new Pair(0, root));
+
+    while (q.Count > 0) 
+    {
+        Pair cur = q.Dequeue();
+
+        if (!topViewMap.ContainsKey(cur.hd)) 
+        {
+             topViewMap.Add(cur.hd, cur.node);
+        }
+        if (cur.node.Left != null)
+        {
+            q.Enqueue(new Pair(cur.hd - 1, cur.node.Left));
+        }
+        if (cur.node.Right != null)
+        {
+            q.Enqueue(new Pair(cur.hd + 1, cur.node.Right));
+        }
+    }
+
+    List<int> list = new List<int>();
+    foreach (var item in topViewMap) 
+    {
+        list.Add(item.Value.data);
+        Console.Write(item.Value.data + " ");
+    }
+     return list;
+    
+}
+
+Console.WriteLine("Bottom view of the tree : ");
+NodeT y = CreateTree();
+int[] ar = TreeBottomView(y).ToArray();
+printArray(ar);
+
+List<int> TreeBottomView(NodeT root)
+{
+    Queue<Pair> q = new Queue<Pair>();
+    SortedDictionary<int, NodeT> topViewMap = new SortedDictionary<int, NodeT>();
+
+    if (root == null) { return new List<int>(); }
+
+    q.Enqueue(new Pair(0, root));
+
+    while (q.Count > 0)
+    {
+        Pair cur = q.Dequeue();
+
+        
+            topViewMap[cur.hd]= cur.node ;
+        
+        if (cur.node.Left != null)
+        {
+            q.Enqueue(new Pair(cur.hd - 1, cur.node.Left));
+        }
+        if (cur.node.Right != null)
+        {
+            q.Enqueue(new Pair(cur.hd + 1, cur.node.Right));
+        }
+    }
+
+    List<int> list = new List<int>();
+    foreach (var item in topViewMap)
+    {
+        list.Add(item.Value.data);
+     //   Console.Write(item.Value.data + " ");
+    }
+    return list;
+
+}
