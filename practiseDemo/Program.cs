@@ -1465,7 +1465,7 @@ List<int> TreeBottomView(NodeT root)
 // Diameter of the Binary Tree :
 // 
 int ans = 0;
-Console.WriteLine("Diameter of Binary Tree : ");
+//Console.WriteLine("Diameter of Binary Tree : ");
 
 int Diameter(NodeT root)
 {
@@ -1476,4 +1476,27 @@ int Diameter(NodeT root)
     ans = Math.Max(ans, 1 + lh + rh);
     return Math.Max(lh,rh) + 1;
 }
-Console.WriteLine( "d : " + Diameter(CreateTree()) + "Answer :" + ans ) ;
+//Console.WriteLine( "d : " + Diameter(CreateTree()) + "Answer :" + ans ) ;
+
+
+// Finding the Lowest Common anscester :  : : : :  :
+NodeT lcaNode = lca(x, 16, 16);
+lcaNode.data = lcaNode == null ? 0 :lcaNode.data;
+Console.WriteLine("LCA  : " +  lcaNode.data);
+NodeT lca(NodeT root, int n1,int n2 ) 
+{
+    if (root == null) return null;
+
+    if (root.data == n1 || root.data == n2) 
+    {
+        return root;
+    }
+
+    NodeT right = lca(root.Left, n1, n2);
+    NodeT left = lca(root.Right, n1, n2);
+
+    if (right == null) return left;
+    if (left == null) return right;
+
+    return root;
+}
