@@ -1528,3 +1528,39 @@ bool BstSearch(NodeT root, int x)
    
     return BstSearch(root.Right, x);
 }
+
+//  Delete node in BST
+
+NodeT ansNode = x.BSTcreateSampletree();
+PrintLevelOrder(ansNode);
+BSTdel(ansNode,50);
+Console.WriteLine("Deleting 50 ");
+
+PrintLevelOrder(ansNode);
+
+NodeT BSTdel(NodeT root ,int key) 
+{
+    if (root == null) return root;
+    if (key < root.data) root.Left = BSTdel(root.Left, key);
+    else if (key > root.data) root.Right = BSTdel(root.Right, key);
+    else {
+        if (root.Left == null) return root.Right;
+        else if (root.Right == null) return root.Left;
+
+        root.data = MinValue(root.Right);
+
+        root.Right = BSTdel(root.Right, root.data);
+    }
+    return root;
+}
+
+int MinValue(NodeT root) 
+{
+   int min = root.data;
+    while (root.Left != null) 
+    {
+        min = root.Left.data;
+        root = root.Left;
+    }
+    return min;
+}
