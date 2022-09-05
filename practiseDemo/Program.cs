@@ -1480,9 +1480,8 @@ int Diameter(NodeT root)
 
 
 // Finding the Lowest Common anscester :  : : : :  :
-NodeT lcaNode = lca(x, 16, 16);
-lcaNode.data = lcaNode == null ? 0 :lcaNode.data;
-Console.WriteLine("LCA  : " +  lcaNode.data);
+//NodeT lcaNode = lca(x, 16, 16);
+//Console.WriteLine("LCA  : " +  lcaNode.data);
 NodeT lca(NodeT root, int n1,int n2 ) 
 {
     if (root == null) return null;
@@ -1499,4 +1498,33 @@ NodeT lca(NodeT root, int n1,int n2 )
     if (left == null) return right;
 
     return root;
+}
+
+// Inert data to binary tree   - Not considertng Balanced / Unbalanced tree 
+
+NodeT BstInsert(NodeT root,int key) 
+{
+    if (root == null) return new NodeT(key);
+    if (root.data > key)
+    {
+        root.Left = BstInsert(root.Left, key);
+    }
+    else if (root.data < key) 
+    {
+        root.Right = BstInsert(root.Right, key);
+    }
+
+    return root;
+}
+
+// Search in BST : 
+bool BstSearch(NodeT root, int x)
+{
+    if (root == null) return false;
+    if (root.data > x)
+    {
+     return BstSearch(root.Left, x);
+    }
+   
+    return BstSearch(root.Right, x);
 }
