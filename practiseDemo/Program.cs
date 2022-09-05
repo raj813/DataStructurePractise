@@ -1534,7 +1534,7 @@ bool BstSearch(NodeT root, int x)
 NodeT ansNode = x.BSTcreateSampletree();
 PrintLevelOrder(ansNode);
 BSTdel(ansNode,50);
-Console.WriteLine("Deleting 50 ");
+Console.WriteLine("Deleting 50  ");
 
 PrintLevelOrder(ansNode);
 
@@ -1563,4 +1563,25 @@ int MinValue(NodeT root)
         root = root.Left;
     }
     return min;
+}
+//  Check its valid BST : 
+// Empty root ,single root is also a vlaid binary search tree . 
+
+NodeT prev = null;
+
+Console.WriteLine("Given Binary tree is {0} Valid" , isvalidBST(x.BSTcreateSampletree()) ?"":"NOT");
+bool isvalidBST(NodeT root)
+{
+    if (root != null) 
+    {
+        if (!isvalidBST(root.Left)) return false;
+
+        if (prev != null && root.data <= prev.data) return false;
+
+        prev = root ;
+
+        return isvalidBST(root.Right);
+    }
+
+    return true;
 }

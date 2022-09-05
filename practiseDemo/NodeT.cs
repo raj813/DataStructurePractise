@@ -42,7 +42,7 @@ namespace practiseDemo
             root.Right.Left = new NodeT(20);
             root.Right.Right.Right = new NodeT(100);
             root.Right.Right.Left = new NodeT(70);
-            root.Right.Right.Left.Left = new NodeT(60);
+            root.Right.Right.Left.Left = new NodeT(6);
             return root;
 
         }
