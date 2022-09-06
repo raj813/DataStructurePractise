@@ -1585,3 +1585,44 @@ bool isvalidBST(NodeT root)
 
     return true;
 }
+
+// Floor and ceil valur in given BST . 
+Console.WriteLine("Floor value is  : " + floor(x.BSTcreateSampletree(), 21));
+int floor(NodeT root,int key) {
+    int ans = int.MaxValue;
+    while (root != null) 
+    {
+        if (root.data == key) 
+        {
+            return root.data;
+        }
+        if (root.data > key) { root = root.Left; }
+        else {
+            ans = root.data;
+            root = root.Right; 
+        }
+
+    }
+    return ans;
+}
+
+Console.WriteLine("ceil value is  : " + ceil(x.BSTcreateSampletree(), 21));
+int ceil(NodeT root, int key)
+{
+    int ans = int.MinValue;
+    while (root != null)
+    {
+        if (root.data == key)
+        {
+            return root.data;
+        }
+        if (root.data < key) { root = root.Right; }
+        else
+        {
+            ans = root.data;
+            root = root.Left;
+        }
+
+    }
+    return ans;
+}
